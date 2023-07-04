@@ -1,0 +1,24 @@
+{
+    "name": "icpc_cpp",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "dev",
+    "workspaceFolder": "/home/dev/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "usernamehw.errorlens"
+            ]
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localWorkspaceFolder}",
+            "target": "/home/dev/workspace"
+        }
+    ],
+    "shutdownAction": "stopContainer"
+}

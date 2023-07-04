@@ -1,0 +1,62 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cpp_debug_build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-O2",
+                "-DDEBUG",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}_dev.out"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "cpp_build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-Wall",
+                "-Wextra",
+                "-O2",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "cpp_open_stdout",
+            "type": "shell",
+            "command": "code",
+            "args": [
+                "${fileDirname}/${fileBasenameNoExtension}_out"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "cpp_build_open_stdout",
+            "dependsOn": [
+                "cpp_build",
+                "cpp_open_stdout"
+            ]
+        },
+    ]
+}
